@@ -42,14 +42,14 @@ const Login = () => {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="flex justify-center">
-          <div className="bg-blue-600 p-3 rounded-xl shadow-lg">
+        <div className="flex flex-col items-center mb-8">
+          <div className="w-16 h-16 bg-blue-600 rounded-xl shadow-lg flex items-center justify-center mb-4">
             <Briefcase className="w-10 h-10 text-white" />
           </div>
+          <h1 className="text-4xl font-extrabold text-gray-900 tracking-tight">
+            Joblenda
+          </h1>
         </div>
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-          AI Job Agent
-        </h2>
         <p className="mt-2 text-center text-sm text-gray-600">
           Your personal AI career coach and application autopilot
         </p>

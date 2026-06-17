@@ -72,50 +72,50 @@ const Dashboard = () => {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-gray-900">
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
           Welcome back, {auth.currentUser?.displayName || auth.currentUser?.email?.split('@')[0]}!
         </h1>
       </div>
 
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-white rounded-lg shadow p-6 border border-gray-100">
-          <div className="text-gray-500 text-sm font-medium mb-1">Total Jobs Tracked</div>
-          <div className="text-3xl font-bold text-gray-900">{stats.total}</div>
+        <div className="bg-white dark:bg-slate-900 rounded-lg shadow p-6 border border-gray-100 dark:border-slate-800 transition-colors">
+          <div className="text-gray-500 dark:text-gray-400 text-sm font-medium mb-1">Total Jobs Tracked</div>
+          <div className="text-3xl font-bold text-gray-900 dark:text-white">{stats.total}</div>
         </div>
-        <div className="bg-white rounded-lg shadow p-6 border border-gray-100">
-          <div className="text-gray-500 text-sm font-medium mb-1">Applications Sent</div>
-          <div className="text-3xl font-bold text-blue-600">{stats.sent}</div>
+        <div className="bg-white dark:bg-slate-900 rounded-lg shadow p-6 border border-gray-100 dark:border-slate-800 transition-colors">
+          <div className="text-gray-500 dark:text-gray-400 text-sm font-medium mb-1">Applications Sent</div>
+          <div className="text-3xl font-bold text-blue-600 dark:text-blue-500">{stats.sent}</div>
         </div>
-        <div className="bg-white rounded-lg shadow p-6 border border-gray-100">
-          <div className="text-gray-500 text-sm font-medium mb-1">Interviews Scheduled</div>
-          <div className="text-3xl font-bold text-orange-600">{stats.interviews}</div>
+        <div className="bg-white dark:bg-slate-900 rounded-lg shadow p-6 border border-gray-100 dark:border-slate-800 transition-colors">
+          <div className="text-gray-500 dark:text-gray-400 text-sm font-medium mb-1">Interviews Scheduled</div>
+          <div className="text-3xl font-bold text-orange-600 dark:text-orange-500">{stats.interviews}</div>
         </div>
-        <div className="bg-white rounded-lg shadow p-6 border border-gray-100">
-          <div className="text-gray-500 text-sm font-medium mb-1">Offers Received</div>
-          <div className="text-3xl font-bold text-green-600">{stats.offers}</div>
+        <div className="bg-white dark:bg-slate-900 rounded-lg shadow p-6 border border-gray-100 dark:border-slate-800 transition-colors">
+          <div className="text-gray-500 dark:text-gray-400 text-sm font-medium mb-1">Offers Received</div>
+          <div className="text-3xl font-bold text-green-600 dark:text-green-500">{stats.offers}</div>
         </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Quick Start */}
-        <div className="bg-white rounded-lg shadow p-6 border border-gray-100 lg:col-span-1">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">Quick Start</h2>
+        <div className="bg-white dark:bg-slate-900 rounded-lg shadow p-6 border border-gray-100 dark:border-slate-800 lg:col-span-1 transition-colors">
+          <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Quick Start</h2>
           <div className="space-y-3">
-            <Link to="/search" className="flex items-center w-full px-4 py-3 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg transition-colors group">
-              <Search className="w-5 h-5 mr-3 text-blue-500" />
+            <Link to="/search" className="flex items-center w-full px-4 py-3 bg-blue-50 dark:bg-blue-900/30 hover:bg-blue-100 dark:hover:bg-blue-900/50 text-blue-700 dark:text-blue-400 rounded-lg transition-colors group">
+              <Search className="w-5 h-5 mr-3 text-blue-500 dark:text-blue-400" />
               <span className="font-medium">Search New Jobs</span>
               <ArrowRight className="w-4 h-4 ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
             </Link>
             <button 
               onClick={() => fileInputRef.current?.click()}
               disabled={uploading}
-              className="flex items-center w-full px-4 py-3 bg-gray-50 hover:bg-gray-100 text-gray-700 rounded-lg transition-colors group disabled:opacity-50"
+              className="flex items-center w-full px-4 py-3 bg-gray-50 dark:bg-slate-800/50 hover:bg-gray-100 dark:hover:bg-slate-800 text-gray-700 dark:text-gray-300 rounded-lg transition-colors group disabled:opacity-50"
             >
               {uploading ? (
                 <Loader2 className="w-5 h-5 mr-3 text-blue-500 animate-spin" />
               ) : (
-                <Upload className="w-5 h-5 mr-3 text-gray-500" />
+                <Upload className="w-5 h-5 mr-3 text-gray-500 dark:text-gray-400" />
               )}
               <span className="font-medium">{uploading ? 'Parsing with AI...' : 'Upload Master Resume'}</span>
               {!uploading && <ArrowRight className="w-4 h-4 ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />}
@@ -127,8 +127,8 @@ const Dashboard = () => {
               accept=".pdf,.doc,.docx" 
               className="hidden" 
             />
-            <Link to="/applications" className="flex items-center w-full px-4 py-3 bg-gray-50 hover:bg-gray-100 text-gray-700 rounded-lg transition-colors group">
-              <Briefcase className="w-5 h-5 mr-3 text-gray-500" />
+            <Link to="/applications" className="flex items-center w-full px-4 py-3 bg-gray-50 dark:bg-slate-800/50 hover:bg-gray-100 dark:hover:bg-slate-800 text-gray-700 dark:text-gray-300 rounded-lg transition-colors group">
+              <Briefcase className="w-5 h-5 mr-3 text-gray-500 dark:text-gray-400" />
               <span className="font-medium">View Applications</span>
               <ArrowRight className="w-4 h-4 ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
             </Link>
@@ -136,30 +136,30 @@ const Dashboard = () => {
         </div>
 
         {/* Recent Apps */}
-        <div className="bg-white rounded-lg shadow p-6 border border-gray-100 lg:col-span-2">
+        <div className="bg-white dark:bg-slate-900 rounded-lg shadow p-6 border border-gray-100 dark:border-slate-800 lg:col-span-2 transition-colors">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-semibold text-gray-900">Recent Applications</h2>
-            <Link to="/applications" className="text-sm text-blue-600 hover:text-blue-800 font-medium">View all</Link>
+            <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Recent Applications</h2>
+            <Link to="/applications" className="text-sm text-blue-600 dark:text-blue-500 hover:text-blue-800 dark:hover:text-blue-400 font-medium">View all</Link>
           </div>
           {loading ? (
             <div className="animate-pulse space-y-4">
-              {[1,2,3].map(i => <div key={i} className="h-12 bg-gray-100 rounded" />)}
+              {[1,2,3].map(i => <div key={i} className="h-12 bg-gray-100 dark:bg-slate-800 rounded" />)}
             </div>
           ) : recentApps.length === 0 ? (
-            <div className="text-center py-8 text-gray-500">
+            <div className="text-center py-8 text-gray-500 dark:text-gray-400">
               No applications tracked yet. Time to start searching!
             </div>
           ) : (
             <div className="space-y-4">
               {recentApps.map(app => (
-                <div key={app.application_id} className="flex items-center justify-between p-4 border border-gray-100 rounded-lg hover:bg-gray-50 transition-colors">
+                <div key={app.application_id} className="flex items-center justify-between p-4 border border-gray-100 dark:border-slate-800 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-800/50 transition-colors">
                   <div className="flex items-center">
-                    <div className="p-2 bg-blue-50 rounded-lg mr-4">
-                      <Briefcase className="w-5 h-5 text-blue-600" />
+                    <div className="p-2 bg-blue-50 dark:bg-blue-900/30 rounded-lg mr-4">
+                      <Briefcase className="w-5 h-5 text-blue-600 dark:text-blue-500" />
                     </div>
                     <div>
-                      <h3 className="text-sm font-semibold text-gray-900">{app.job_title}</h3>
-                      <p className="text-xs text-gray-500">{app.company}</p>
+                      <h3 className="text-sm font-semibold text-gray-900 dark:text-white">{app.job_title}</h3>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">{app.company}</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">

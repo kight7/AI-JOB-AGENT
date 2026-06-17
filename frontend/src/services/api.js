@@ -2,7 +2,7 @@ import axios from 'axios';
 import { auth } from './firebase';
 
 const api = axios.create({
-  baseURL: 'http://localhost:8000/api',
+  baseURL: 'https://ai-job-agent-2tq9.onrender.com/api',
 });
 
 // Attach Firebase ID Token to every request and inject user_id if needed

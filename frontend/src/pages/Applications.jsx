@@ -68,25 +68,25 @@ const Applications = () => {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Application Tracker</h1>
-          <p className="text-gray-500 mt-1">Manage your pipeline and interview process.</p>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Application Tracker</h1>
+          <p className="text-gray-500 dark:text-gray-400 mt-1">Manage your pipeline and interview process.</p>
         </div>
         
         {/* Filter */}
         <select 
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
-          className="border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 py-2 pl-3 pr-10 text-sm bg-white"
+          className="border border-gray-300 dark:border-slate-700 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 py-2 pl-3 pr-10 text-sm bg-white dark:bg-slate-800 text-gray-900 dark:text-white transition-colors"
         >
           <option value="ALL">All Statuses</option>
           {STATUSES.map(s => <option key={s.id} value={s.id}>{s.label}</option>)}
         </select>
       </div>
 
-      <div className="bg-white shadow rounded-lg border border-gray-200 overflow-hidden">
+      <div className="bg-white dark:bg-slate-900 shadow rounded-lg border border-gray-200 dark:border-slate-800 overflow-hidden transition-colors">
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
+          <table className="min-w-full divide-y divide-gray-200 dark:divide-slate-800">
+            <thead className="bg-gray-50 dark:bg-slate-800/50">
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Job Details</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
@@ -94,7 +94,7 @@ const Applications = () => {
                 <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
+            <tbody className="bg-white dark:bg-slate-900 divide-y divide-gray-200 dark:divide-slate-800">
               {filteredApps.length === 0 ? (
                 <tr>
                   <td colSpan="4" className="px-6 py-12 text-center text-gray-500">
@@ -102,10 +102,10 @@ const Applications = () => {
                   </td>
                 </tr>
               ) : filteredApps.map(app => (
-                <tr key={app.application_id} className="hover:bg-gray-50 transition-colors">
+                <tr key={app.application_id} className="hover:bg-gray-50 dark:hover:bg-slate-800/50 transition-colors">
                   <td className="px-6 py-4">
-                    <div className="text-sm font-bold text-gray-900">{app.job_title}</div>
-                    <div className="text-sm text-gray-500">{app.company}</div>
+                    <div className="text-sm font-bold text-gray-900 dark:text-white">{app.job_title}</div>
+                    <div className="text-sm text-gray-500 dark:text-gray-400">{app.company}</div>
                     {app.notes && (
                       <div className="mt-1 flex items-start text-xs text-gray-400">
                         <MessageSquare className="w-3 h-3 mr-1 mt-0.5 flex-shrink-0" /> 
@@ -117,9 +117,9 @@ const Applications = () => {
                     <select
                       value={app.status}
                       onChange={(e) => handleStatusChange(app.application_id, e.target.value)}
-                      className={`text-xs font-semibold rounded-full px-3 py-1 border-0 cursor-pointer focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 ${STATUSES.find(s => s.id === app.status)?.color || 'bg-gray-100'}`}
+                      className={`text-xs font-semibold rounded-full px-3 py-1 border-0 cursor-pointer focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 ${STATUSES.find(s => s.id === app.status)?.color || 'bg-gray-100 text-gray-800'}`}
                     >
-                      {STATUSES.map(s => <option key={s.id} value={s.id} className="bg-white text-gray-900">{s.label}</option>)}
+                      {STATUSES.map(s => <option key={s.id} value={s.id} className="bg-white dark:bg-slate-800 text-gray-900 dark:text-white">{s.label}</option>)}
                     </select>
                   </td>
                   <td className="px-6 py-4 text-sm text-gray-500">
@@ -147,10 +147,10 @@ const Applications = () => {
       {/* Note Modal */}
       {noteModal.open && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg p-6 w-full max-w-md shadow-xl">
-            <h3 className="text-lg font-bold text-gray-900 mb-4">Application Notes</h3>
+          <div className="bg-white dark:bg-slate-900 rounded-lg p-6 w-full max-w-md shadow-xl border border-transparent dark:border-slate-800">
+            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">Application Notes</h3>
             <textarea
-              className="w-full h-32 p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 text-sm"
+              className="w-full h-32 p-3 border border-gray-300 dark:border-slate-700 rounded-md focus:ring-blue-500 focus:border-blue-500 text-sm bg-white dark:bg-slate-800 text-gray-900 dark:text-white transition-colors"
               placeholder="Add interview notes, contacts, or thoughts here..."
               value={noteModal.notes}
               onChange={(e) => setNoteModal({ ...noteModal, notes: e.target.value })}
@@ -158,7 +158,7 @@ const Applications = () => {
             <div className="mt-4 flex justify-end gap-3">
               <button 
                 onClick={() => setNoteModal({ open: false, appId: null, notes: '' })} 
-                className="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md transition"
+                className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 rounded-md transition-colors"
               >
                 Cancel
               </button>
